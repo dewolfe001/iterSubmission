@@ -1,0 +1,22 @@
+=============================================================
+=== Iter Submission Plugin
+=== Version: 1.0
+=== Author: Shawn DeWolfe <sdewolfe@uvic.ca>
+=============================================================
+An OJS plugin to allow the addition of fields to the submission process to gather article 
+tracking data used by Ren&Ref, which maps the below.  They have a controlled vocabulary, 
+which are handled by the OJS operator / editor
+
+- Year (of publication), handled by publisher
+- Issue  (of publication), handled by publisher
+- Author Last Name
+- Short Title
+- Discipline 1
+- Discipline 2
+- Location 1
+- Location 2
+- Century 1
+- Century 2
+- Notes
+
+Current issue: it causes the plugin screen in OJS to hang and not load the plugins UI.
