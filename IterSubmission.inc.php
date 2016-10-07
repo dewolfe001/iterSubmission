@@ -15,25 +15,60 @@
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');
-import('lib.pkp.classes.submission.SubmissionMetadataFormImplementation');
+// import('lib.pkp.classes.submission.SubmissionMetadataFormImplementation');
+// import('classes.submission.SubmissionMetadataFormImplementation');
 
-class IterSubmission extends SubmissionMetadataFormImplementation {
+class IterSubmission extends GenericPlugin {
 	/**
 	 * Constructor.
 	 * @param $parentForm Form A form that can use this form.
 	 */
+	 
+	 /*
 	function IterSubmission($parentForm = null) {
-		parent::SubmissionMetadataFormImplementation($parentForm);
+		// parent::SubmissionMetadataFormImplementation($parentForm);
 	}
+	*/
 	
 	function register($category, $path) {
-		/*
-		if (parent::register($category, $path)) {
-			HookRegistry::register('TemplateManager::display',array(&$this, 'callback'));
-			return true;
+		$success = parent::register($category, $path);
+		if ($success && $this->getEnabled()) {
+			//
 		}
-		*/
-		return false;
+		return $success;	
+	}
+	
+	/**
+	 * Determine the plugin sequence. Overrides parent so that
+	 * the plugin will be displayed during install.
+	 */
+	function getSeq() {
+		if (!Config::getVar('general', 'installed')) return 1;
+		return 0;
+	}	
+
+	function getName() {
+		return 'IterSubmission';
+	}
+
+	function getDisplayName() {
+		return __('plugins.generic.iterSubmissions.displayName');
+	}
+
+	function getCitationFormatName() {
+		return __('plugins.generic.iterSubmissions.citationFormatName');
+	}
+
+	function getDescription() {
+		return __('plugins.generic.iterSubmissions.description');
+	}	
+
+	/**
+	 * Get the filename of the ADODB schema for this plugin.
+	 * @return string Full path and filename to schema descriptor.
+	 */
+	function getInstallSchemaFile() {
+		return $this->getPluginPath() . '/schema.xml';
 	}
 
 	/**
