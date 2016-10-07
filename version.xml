@@ -13,7 +13,7 @@
 <version>
 	<application>iterSubmission</application>
 	<type>plugins.generic</type>
-	<release>1.0.0.0</release>
+	<release>1.0.1.0</release>
 	<date>2016-10-04</date>
 	<lazy-load>0</lazy-load>
 	<sitewide>1</sitewide>
